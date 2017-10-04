@@ -4,15 +4,21 @@
 {% endblock title %}
 
 {% block content %}
-<div class="block">
+<div class="ideas">
+<h1 class="section">My Ideas:</h1>
 <ul>
     {% for idea in ideas %}
-        <h2>{{ idea.votes }}</h2>
-        <h2>{{ idea.name }}</h2>
-        <h2>{{ idea.overview }}</h2>
-        <h2>{{ idea.description }}</h2>
-        <h2>{{ idea.overview }}</h2>
-        <h2>{{ idea.published_date }}</h2>
+     <li>
+        <div class="idea_section">
+            <h2>
+                <a class="idea_name" href="{% url 'idea_detail' slug=idea.slug %}">{{ idea.name }}
+                </a>
+            </h2>
+            <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
+            <p class="username">by <i class="username"><a id="user_link" href="{% url 'user_profile' username=idea.user %}">{{ idea.user }}</a></i></p>
+            <p style="margin-top: 1em;">{{ idea.description|truncatewords:25 }}</p>
+        </div>
+    </li>
     {% endfor %}
 </ul>
 </div>

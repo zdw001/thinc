@@ -5,6 +5,7 @@ from datetime import datetime
 from django.db.models.signals import post_save
 from django import forms
 from django.dispatch import receiver
+from thincsite import settings
 
 class Idea(models.Model):
 	user = models.ForeignKey('auth.User')
@@ -25,6 +26,7 @@ class Idea(models.Model):
 
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	photo = models.ImageField(upload_to='profile_pics/', blank=True)
 	website = models.URLField(default='', blank=True)
 	bio = models.TextField(max_length=500, default='', blank=True)
 	phone = models.CharField(max_length=20, blank=True, default='')

@@ -10,6 +10,7 @@
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Submit</button>
+        <input type="submit" name="cancel" value="Cancel" formnovalidate>
     </form>
 </div>
 {% endblock content %}

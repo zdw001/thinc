@@ -12,7 +12,7 @@ class IdeaAdmin(admin.ModelAdmin):
 
 class ProfileAdmin(admin.ModelAdmin):
 	model = Profile
-	list_display = ('user', 'website', 'bio', 'phone', 'city', 'country')
+	list_display = ('user', 'photo', 'website', 'bio', 'phone', 'city', 'country')
 
 # Register your models here.
 admin.site.register(Idea, IdeaAdmin)

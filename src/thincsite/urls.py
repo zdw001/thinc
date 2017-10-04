@@ -24,6 +24,8 @@ from django.contrib.auth.views import (
     password_reset_complete
     )
 from ideashare import views, urls
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 urlpatterns = [
@@ -65,4 +67,4 @@ urlpatterns = [
         {'template_name':
         'registration/password_reset_complete.html'},
         name="password_reset_complete"),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

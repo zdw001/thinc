@@ -20,28 +20,6 @@ from django.contrib import messages
 from registration.backends.simple.views import RegistrationView
 from django import forms
 
-# def browse(request, initial=None):
-# 	if initial: 
-# 		ideas = Idea.objects.filter(name__istartswith=initial)
-# 		ideas = ideas.order_by('name')
-# 	else:
-# 		ideas = Idea.objects.all().order_by('name')
-
-# 	ideas_by_vote = Idea.objects.all().order_by('-votes')
-
-# 	return render(request, 'ideashare/browse.html', {
-# 			'ideas': ideas,
-# 			'ideas_by_vote': ideas_by_vote,
-# 			'initial': initial,
-# 		})
-
-# def browse_by_votes(request):
-# 	ideas = Idea.objects.all().order_by('-votes')
-
-# 	return render(request, 'search/browse_by_votes.html', {
-# 			'ideas': ideas,
-# 		})
-
 def browse(request, initial=None):
 	if initial: 
 		ideas = Idea.objects.filter(name__istartswith=initial)
@@ -102,7 +80,7 @@ def create_idea(request):
 		return redirect('login')
 
 	if "cancel" in request.POST:
-            return redirect('index')
+		return redirect('index')
 
 	# if we're coming from a submitted form, do this
 	if request.method == 'POST':
@@ -142,6 +120,9 @@ def edit_idea(request, slug):
 	# set the form we're using 
 	form_class = IdeaForm
 
+	if "cancel" in request.POST:
+		return redirect('index')
+
 	# if we're coming to this view from a submitted form
 	if request.method == 'POST':
 		# grab the data from the submitted form and apply to the form
@@ -161,14 +142,28 @@ def edit_idea(request, slug):
 	})
 
 def index(request):
-	ideas = Idea.objects.order_by('-published_date')
-	top_ideas = Idea.objects.order_by('-votes')
+	# ideas = Idea.objects.order_by('-published_date')
+	ideas = Idea.objects.all()
+	top_ideas = ideas.order_by('-votes')
+	recent_ideas = ideas.order_by('-published_date')
 	users = User.objects.all()
+
+	user_count = 0
+	idea_count = 0
+
+	for user in users:
+		user_count += 1
+
+	for idea in ideas:
+		idea_count += 1
 
 	return render(request, 'ideashare/index.html', {
 		'users': users,
 		'ideas': ideas,
 		'top_ideas': top_ideas,
+		'recent_ideas': recent_ideas,
+		'user_count': user_count,
+		'idea_count': idea_count,
 	})
 	
 

@@ -2,33 +2,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'images/icons/font-awesome-4.7.0/css/font-awesome.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500" rel="stylesheet">
 </head>
 <body>
 
-<div class="nav">
-	<a href="{% url 'ideashare_home' %}">Home</a>
-	<a href="{% url 'contact' %}">Contact</a>
-	<a href="{% url 'create_idea' %}">Create Idea!</a>
-	<a href="{% url 'browse' %}">Browse</a>
-</div>
-<div class="header">
-	{% if user.is_authenticated %}
-	    <a href="{% url 'my_ideas' %}">My Ideas</a>
-	    <a href="{% url 'user_profile' username=user.username %}">My Profile</a>
-	    <a href="{% url 'auth_logout' %}">Logout</a>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+      <a class="navbar-brand" href="{% url 'ideashare_home' %}"><img src="{% static 'images/thinc-logo-white-carolina.png' %}" width="70" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-    {% else %}
-	    <a href="{% url 'registration_register' %}">Register</a>
-	    <a href="{% url 'auth_login' %}">Login</a>
-    {% endif %}
-</div>
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'browse' %}" style="font-weight: 400;">Browse</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}" style="font-weight: 400;">Contact</a>
+          </li>
+          <li class="nav-item active">
+            <a id="nav_special" class="nav-link nav-item active" href="{% url 'create_idea' %}" style="font-weight: 400;">Create Idea<span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+	      {% if user.is_authenticated %}
+	      <li class="nav-item">
+	    	<a class="nav-link" href="{% url 'my_ideas' %}" style="font-weight: 400;">My Ideas</a>
+	      </li>
+	      <li class="nav-item">
+	    	<a class="nav-link" href="{% url 'user_profile' username=user.username %}" style="font-weight: 400;">My Profile</a>
+	      </li>
+	      <li class="nav-item">
+	    	<a class="nav-link" href="{% url 'auth_logout' %}" style="font-weight: 400;">Logout</a>
+	      </li>
+    	  {% else %}
+    	  <li class="nav-item">	    	
+    	  	<a class="nav-link" href="{% url 'registration_register' %}" style="font-weight: 400;">Register</a>
+    	  </li>
+	      <li class="nav-item">
+	    	<a class="nav-link" href="{% url 'auth_login' %}" style="font-weight: 400;">Login</a>
+	      </li>
+    	  {% endif %}
+    	</ul>
+      </div>
+    </nav>
 
-
-<div id="content">
+<div class="container-fluid">
     {% block content %}{% endblock content %}
     {% block footer %}{% endblock footer %}
 </div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="social">
+      <a href="https://www.linkedin.com/in/winterszachary/" target="_blank" class="fa fa-linkedin fa-2x" id="linkedin"></a>
+      <a href="https://github.com/zdw001" target="_blank" class="fa fa-github fa-2x" id="github"></a>
+      <a href="mailto:zachwinters1@gmail.com" class="fa fa-envelope fa-2x" id="envelope"></a>
+      <a href="https://www.facebook.com/zach.winters.12" target="_blank" class="fa fa-facebook fa-2x" id="facebook"></a>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+<script>
+//   $(function(){
+//       $('#intro, #count').css({ height: $(window).innerHeight() - 66 });
+//       $(window).resize(function(){
+//         $('#intro, #count').css({ height: $(window).innerHeight() - 66 });
+//   });
+// });
+
+</script>
 
 </body>
 </html> 

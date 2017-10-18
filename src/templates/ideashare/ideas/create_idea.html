@@ -4,12 +4,12 @@
 {% endblock title %} 
 
 {% block content %}
-<div class="block">
+<div class="block big_form">
     <h1>Create an Idea</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit"/>
         <input type="submit" name="cancel" value="Cancel" formnovalidate>
     </form>
 </div>

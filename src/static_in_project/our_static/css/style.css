@@ -106,7 +106,7 @@ font-size: 1.2em;
 }
 
 .idea p {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	line-height: 1.2;
 }
 
@@ -156,7 +156,7 @@ a.idea_name:hover {
 	transition: 0.3s;
 }
 
-.edit {
+a.edit {
 	color: #696969;
 	transition: 0.3s;
 }
@@ -171,6 +171,14 @@ footer {
 	background-color: #a6a6a6;
 }
 
+.footer p {
+  margin: 0 auto;
+  padding-top: 30px;
+  max-width: 600px;
+  text-align: center;
+  color: #fff;
+}
+
 .social {
 	width: 190px;
 	margin: 0 auto;
@@ -181,7 +189,7 @@ footer {
 .fa {
 	box-sizing: unset;
 	color: #fff;
-	margin: 25px auto;
+	margin: 15px auto 25px;
     padding: 5px 7px 5px 5px;
     font-size: 30px;
     width: 30px;
@@ -225,6 +233,23 @@ footer {
 /* ======================= OTHER PAGES ======================== */
 /* ============================================================ */
 
+/* =========================== CONTACT ======================== */
+
+.big_form {
+  background-color: #fff;
+  padding: 30px 10%;
+  text-align: center;
+}
+
+.big_form form {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.big_form h1 {
+  text-align: left;
+}
+
 /* ======================= USER PROFILE ======================= */
 
 #user_profile {
@@ -237,7 +262,7 @@ footer {
 	text-align: center;
 	background-color: #fff;
 	-webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
-    -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
 	box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
 	padding: 20px;
 	margin: 50px 5% 50px;
@@ -289,100 +314,110 @@ img.user {
 }
 
 
-/****** LOGIN MODAL ******/
-.loginmodal-container {
+/* ====================== FORMS ========================== */
+
+.form {
+  text-align: center;
+  margin: 100px auto 150px;
+  background-color: #fff;
+  padding: 20px;
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.16), 0 2px 10px 0 rgba(0,0,0,0.12);
+}
+
+#login {
+  width: 300px;
+}
+
+#registration {
+  width: 500px;
   padding: 30px;
-  max-width: 350px;
-  width: 100% !important;
-  background-color: #F7F7F7;
-  margin: 0 auto;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  font-family: roboto;
 }
 
-.loginmodal-container h1 {
-  text-align: center;
-  font-size: 1.8em;
-  font-family: roboto;
+#password_reset {
+  width: 300px;
 }
 
-.loginmodal-container input[type=submit] {
-  width: 100%;
+.form h1 {
+  color: #008ae6;
+  margin: 0 auto .75rem;
+
+}
+
+.form label {
+  text-align: left;
   display: block;
-  margin-bottom: 10px;
-  position: relative;
+  margin-bottom: 0;
+  font-size: 14px;
 }
 
-.loginmodal-container input[type=text], input[type=password] {
-  height: 44px;
-  font-size: 16px;
+.form input {
   width: 100%;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
-  padding: 0 8px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-}
-
-.loginmodal-container input[type=text]:hover, input[type=password]:hover {
-  border: 1px solid #b9b9b9;
-  border-top: 1px solid #a0a0a0;
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-}
-
-.loginmodal {
-  text-align: center;
+  line-height: 20px;
   font-size: 14px;
-  font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
-  padding: 0 8px;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
-  user-select: none; */
+  padding: 6px 8px;
+  box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+  -webkit-box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+  -moz-box-shadow: inset 0 1px 2px rgba(27,31,35,0.075);
+  border: 1px solid #d1d5da;
 }
 
-.loginmodal-submit {
-  /* border: 1px solid #3079ed; */
-  border: 0px;
-  color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
-  padding: 17px 0px;
-  font-family: roboto;
-  font-size: 14px;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
-}
-
-.loginmodal-submit:hover {
-  /* border: 1px solid #2f5bb7; */
-  border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
-}
-
-.loginmodal-container a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 400;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.6;
-  transition: opacity ease 0.5s;
-} 
-
-.login-help{
+#registration span {
   font-size: 12px;
+  color: #696969;
 }
+
+#registration ul {
+  list-style: none;
+  margin-top: -10px;
+}
+
+#registration li {
+  font-size: 12px;
+  color: #696969;
+}
+
+.form .redirect {
+  font-size: 12px;
+  margin-bottom: 0;
+}
+
+.form .submit {
+  background-color: #28a745;
+  background-image: linear-gradient(-180deg, #34d058 0%, #28a745 90%);
+  background-image: -moz-linear-gradient(#34d058, #28a745);
+  background-image: -ms-linear-gradient(#34d058, #28a745);
+  background-image: -o-linear-gradient(#34d058, #28a745);
+  border: 1px solid rgba(27, 31, 35, 0.2);
+  border-radius: 0.25em;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.button.danger {
+    border-color: #b53f3a;
+    border-bottom-color: #a0302a;
+    color: #fff;
+    border-radius: 0.25em;
+    background-color: #dc5f59;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#dc5f59), to(#b33630));
+    background-image: -moz-linear-gradient(#dc5f59, #b33630);
+    background-image: -ms-linear-gradient(#dc5f59, #b33630);
+    background-image: -o-linear-gradient(#dc5f59, #b33630);
+    background-image: linear-gradient(#dc5f59, #b33630);
+}
+
+.form .submit:hover {
+  cursor: pointer;
+  border-color: #333333;
+}
+
+.form .danger:hover {
+  cursor: pointer;
+  border-color: #333333;
+}
+
 
 /* ===================== BOOTSTRAP OVERRIDE =================== */
 .container-fluid {

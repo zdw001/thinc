@@ -9,22 +9,68 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
 class IdeaForm(ModelForm):
-	class Meta:
-		model = Idea
-		# don't include votes because it is not editable
-		fields = ('name', 'overview', 'description',)
+    name = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Name',
+            'style': 'margin-top: 20px;',
+        }))
+    overview = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Provide an overview of your idea',
+            'style': 'resize:none;'
+        }))
+    description = forms.CharField(required=True, widget=forms.Textarea(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Enter a detailed description of your idea',
+            'style': 'resize:none;'
+        }))
+
+    class Meta:
+        model = Idea
+        # don't include votes because it is not editable
+        fields = ('name', 'overview', 'description')
+
+
+    def __init__(self, *args, **kwargs):
+        super(IdeaForm, self).__init__(*args, **kwargs)
+        self.fields['name'].label = '' 
+        self.fields['overview'].label = ''
+        self.fields['description'].label = ''
 
 class ContactForm(forms.Form):
-    contact_name = forms.CharField()
-    contact_email = forms.EmailField()
-    content = forms.CharField(widget=forms.Textarea)
+    contact_name = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Name',
+            'style': 'margin-top: 20px;',
+        }))
+    contact_email = forms.EmailField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Email',
+        }))
+    subject = forms.CharField(required=False, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Subject',
+        }))
+    content = forms.CharField(required=True, widget=forms.Textarea(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'What would you like to say?',
+            'style': 'resize:none;'
+        }))
 
     # the new bit we're adding
     def __init__(self, *args, **kwargs):
         super(ContactForm, self).__init__(*args, **kwargs)
-        self.fields['contact_name'].label = "Your name:" 
-        self.fields['contact_email'].label = "Your email:" 
-        self.fields['content'].label = "What do you want to say?"
+        self.fields['contact_name'].label = '' 
+        self.fields['contact_email'].label = ''
+        self.fields['subject'].label = ''
+        self.fields['content'].label = ''
 
 # registration form
 class RegistrationForm(UserCreationForm):

@@ -9,7 +9,12 @@
         <h2>{{ idea.name }}</h2>
         <h3>{{ idea.overview }} | <span class="published_date">{{ idea.published_date }}</span></h3>
         <p class="username">by <i class="username"><a id="user_link" href="{% url 'user_profile' username=idea.user %}">{{ idea.user }}</a></i></p>
-        <p style="margin-top: 1em;">{{ idea.description }}</p>
+        <p style="margin-top: 1em; margin-bottom: 20px;">{{ idea.description }}</p>
+        {% if user == idea.user %}
+            <p class="edit">
+                <a class="edit" href="{% url 'edit_idea' slug=idea.slug %}">Edit Your Idea</a>
+            </p>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}

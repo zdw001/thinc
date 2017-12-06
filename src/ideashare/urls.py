@@ -13,4 +13,5 @@ urlpatterns = [
  	url(r'^ideas/(?P<slug>[-\w]+)/$', views.idea_detail, name='idea_detail'),
  	url(r'^ideas/(?P<slug>[-\w]+)/edit/$', views.edit_idea, name='edit_idea'),
  	url(r'^profile/(?P<username>\w+)/$', views.profile_view, name='user_profile'),
+ 	url(r'^profile/(?P<username>\w+)/edit/$', views.edit_profile, name='edit_profile'),
 ]

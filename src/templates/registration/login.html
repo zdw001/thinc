@@ -10,8 +10,13 @@
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Log In" class="submit" style="margin-bottom: 40px;" />
+        <input type="submit" value="Sign In" class="submit" style="margin-bottom: 40px;" />
     </form>
+    <br>
+    <p><strong>-- OR --</strong></p>
+    <a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+    <a href="{% url 'social:begin' 'twitter' %}">Login with Twitter</a><br>
+    <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
     <p class="redirect">
         Forgot your password?
     	<a href="{% url 'password_reset' %}"> Change it here</a>

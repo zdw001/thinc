@@ -39,6 +39,9 @@ def browse(request, initial=None):
 def contact(request): 
 	form_class = ContactForm
 
+	if "cancel" in request.POST:
+		return redirect('index')
+
 	# new logic!
 	if request.method == 'POST':
 		form = form_class(data=request.POST)
@@ -138,6 +141,32 @@ def edit_idea(request, slug):
 			'form': form,
 	})
 
+@login_required
+def edit_profile(request, username):
+	profile = User.objects.get(username=username)
+	user = User.objects.get(username=username)
+
+	if user != request.user:
+		raise Http404
+
+	form_class = ProfileForm
+
+	if "cancel" in request.POST:
+		return redirect('index')
+
+	if request.method == 'POST':
+		form = ProfileForm(data=request.POST, instance=profile)
+		if form.is_valid():
+			form.save()
+			return redirect('user_profile', user=profile.user)
+	else:
+		form = form_class(instance=user)
+
+	return render(request, 'edit_profile.html', {
+				'profile': profile,
+				'form': form,
+		})
+
 def index(request):
 	# ideas = Idea.objects.order_by('-published_date')
 	ideas = Idea.objects.all()
@@ -198,26 +227,6 @@ def register(request):
 		form = RegistrationForm()
 	return render(request, 'registration/register.html', {
 			'form': form
-		})
-
-@login_required
-def update_profile(request):
-	if request.method == 'POST':
-		user_form = UserForm(request.POST, instance=request.user)
-		profile_form = ProfileForm(request.POST, instance=request.user.profile)
-		if user_form.is_valid() and profile_form.is_valid():
-			user_form.save()
-			profile_form.save()
-			message.success(request, _('Your profile was successfully updated!'))
-			return redirect('setting:profile')
-		else:
-			messages.error(request, _('Please correct the error below'))
-	else:
-		user_form = UserForm(instance=request.user)
-		profile_form = ProfileForm(instance=request.user.profile)
-	return render(request, 'users/edit_profile.html', {
-			'user_form': user_form,
-			'profile_form': profile_form
 		})
 
 def profile_view(request, username):

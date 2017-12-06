@@ -29,7 +29,7 @@ class Profile(models.Model):
 	photo = models.ImageField(upload_to='profile_pics/', blank=True)
 	website = models.URLField(default='', blank=True)
 	bio = models.TextField(max_length=500, default='', blank=True)
-	phone = models.CharField(max_length=20, blank=True, default='')
+	phone = models.IntegerField(blank=True, default='')
 	city = models.CharField(max_length=100, default='', blank=True)
 	country = models.CharField(max_length=100, default='', blank=True)
 

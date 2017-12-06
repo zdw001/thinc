@@ -19,7 +19,7 @@ class IdeaForm(ModelForm):
         attrs={
             'class': 'form-control',
             'placeholder': 'Provide an overview of your idea',
-            'style': 'resize:none;'
+            'style': 'margin-top: 20px;'
         }))
     description = forms.CharField(required=True, widget=forms.Textarea(
         attrs={
@@ -88,7 +88,46 @@ class UserForm(forms.ModelForm):
         fields = ['first_name', 'last_name', 'email']
 
 class ProfileForm(forms.ModelForm):
+    website = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Website',
+            'style': 'margin-top: 20px;',
+        }))
+    bio = forms.CharField(required=True, widget=forms.Textarea(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Please tell us about yourself',
+            'style': 'resize:none;'
+        }))
+    phone = forms.CharField(max_length=12, required=False, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Phone Number',
+        }))
+    city = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'City',
+            'style': 'width:48%; margin: 0 1%; display: inline-block;',
+        }))
+    country = forms.CharField(required=True, widget=forms.TextInput(
+        attrs={
+            'class': 'form-control',
+            'placeholder': 'Country',
+            'style': 'width:48%; margin: 0 1%; display: inline-block;',
+        }))
+
     class Meta:
         model = Profile
         fields = ('website', 'bio', 'phone', 'city', 'country')
+
+    def __init__(self, *args, **kwargs):
+        super(ProfileForm, self).__init__(*args, **kwargs)
+        self.fields['website'].label = '' 
+        self.fields['bio'].label = ''
+        self.fields['phone'].label = ''
+        self.fields['city'].label = ''
+        self.fields['country'].label = ''
+
 

@@ -25,7 +25,7 @@ SECRET_KEY = 'ph2jn4^u*_#98%6!9tcech9p4#lz94)e$4+8@hjiu0z1u%fav-'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
@@ -33,7 +33,7 @@ ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_HOST = 'smtp.gmail.com'
 DEFAULT_FROM_EMAIL = 'zwintersdeveloper@gmail.com'
 EMAIL_HOST_USER = 'zwintersdeveloper@gmail.com'
-EMAIL_HOST_PASSWORD = 'Florida1'
+EMAIL_HOST_PASSWORD = 'XXXXXXX'
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'social_django',
     'ideashare',
 ]
 
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'thincsite.urls'
@@ -77,6 +79,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -114,6 +118,22 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend',
+)
+
+SOCIAL_AUTH_GITHUB_KEY = 'c5827594512bef372678'
+SOCIAL_AUTH_GITHUB_SECRET = '711a70417e4bdee5125ddf15ee16586b27abbc34'
+
+SOCIAL_AUTH_TWITTER_KEY = 'fvWiTyqh80WvtdZ3ZXOBCBRuo'
+SOCIAL_AUTH_TWITTER_SECRET = 'cRyicKDSnE2a4TAXqiKTBLUT5QNCk8YOS5S14WCrTh3rId2MD5'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '302845306878831'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '4c24016087e905722135b8d6a3f6fbc8'  # App Secret
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.11/topics/i18n/

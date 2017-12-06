@@ -17,6 +17,9 @@
     		<h3 class="user"><span class="user">{{ user.username }}</span></h3>
     		<p class="user">{{ user.profile.bio }}</p>
     		<h3 class="user">{{ user.profile.city }}, {{ user.profile.country }}</h3>
+            <p class="edit">
+                <a class="edit" href="{% url 'edit_profile' username=user.username %}">Edit Your Profile</a>
+            </p>
         </div>
 	</div>
     <div class="ideas" style="padding-top: 0; padding-bottom: 0;">

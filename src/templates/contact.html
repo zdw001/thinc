@@ -9,7 +9,8 @@
 	<form role="form" action="" method="post">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<button type="submit">Submit</button>
+		<button type="submit" class="button big">Submit</button>
+		<input type="submit" class="button big danger" name="cancel" value="Cancel" formnovalidate>
 	</form>
 </div>
 {% endblock %}

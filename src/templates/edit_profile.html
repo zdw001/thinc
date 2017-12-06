@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block title %}
-    Create an Idea - {{ block.super }}
-{% endblock title %} 
+    Edit {{ profile.user }} - {{ block.super }}
+{% endblock title %}
 
 {% block content %}
 <div class="block big_form">
-    <h1>Create an Idea</h1>
+    <h1>Edit Profile</h1>
     <form role="form" action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" class="button big" value="Submit"/>
+        <button type="submit" class="button big">Submit</button>
         <input type="submit" class="button big danger" name="cancel" value="Cancel" formnovalidate>
     </form>
 </div>
-{% endblock content%}
+{% endblock content %}

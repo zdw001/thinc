@@ -141,7 +141,7 @@ def edit_idea(request, slug):
 			'form': form,
 	})
 
-@login_required
+# @login_required
 def edit_profile(request, username):
 	profile = User.objects.get(username=username)
 	user = User.objects.get(username=username)

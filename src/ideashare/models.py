@@ -29,7 +29,7 @@ class Profile(models.Model):
 	photo = models.ImageField(upload_to='profile_pics/', blank=True)
 	website = models.URLField(default='', blank=True)
 	bio = models.TextField(max_length=500, default='', blank=True)
-	phone = models.IntegerField(blank=True, default='')
+	phone = models.CharField(max_length=20, blank=True, default='')
 	city = models.CharField(max_length=100, default='', blank=True)
 	country = models.CharField(max_length=100, default='', blank=True)
 
@@ -41,4 +41,3 @@ def create_user_profile(sender, instance, created, **kwargs):
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
 	instance.profile.save()
-

@@ -35,7 +35,6 @@ urlpatterns = [
 	url(r'^ideashare/', include('ideashare.urls')),
 
     # GENERAL URLS
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^admin/', admin.site.urls),
     url(r'^contact/$', views.contact, name='contact'),
 
